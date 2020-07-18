@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
 
-export default class Square extends Component {
+interface State {
+  value?: string | null,
+}
+
+export default class Square extends Component<State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: null,
+    }
+
+  }
   render() {
     return (
-      <div className="square">
-        {this.props.value}
-      </div>)
+      <button className="square" onClick={() => this.setState({ value: 'X' })}>
+        {this.state.value}
+      </button>
+    );
   }
 }
