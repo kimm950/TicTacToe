@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Square from './Square.tsx';
 
 interface State {
-  squares: Array,
+  squares: number[] | null,
 }
 
 export default class Board extends Component<State> {
@@ -10,12 +10,22 @@ export default class Board extends Component<State> {
     super(props);
     this.state = {
       squares: Array(9).fill(null),
+      xIsNext: true,
     }
   }
+
+  handleClick(i) {
+    const newSquares = this.state.squares.slice();
+    newSquares[i] = 'X';
+    this.setState({ squares: newSquares });
+  }
+
   renderSquare(i) {
-    return <Square
-      value={this.state.squares[i]}
-      onClick={this.handleClick(i)} />;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)} />
+    );
   }
 
   render() {

@@ -1,22 +1,16 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-interface State {
+interface Props {
   value?: string | null,
+  onClick: () => void,
 }
 
-export default class Square extends Component<State> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: null,
-    }
-
-  }
-  render() {
-    return (
-      <button className="square" onClick={() => this.setState({ value: 'X' })}>
-        {this.state.value}
-      </button>
-    );
-  }
+const Square = (props: Props) => {
+  return (
+    <button className="square" onClick={props.onClick}>
+      {props.value}
+    </button>
+  );
 }
+
+export default Square;
