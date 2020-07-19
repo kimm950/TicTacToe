@@ -1,39 +1,22 @@
 import React, { Component } from 'react';
-import Square from './Square.tsx';
+import Square from './Square';
 
-interface State {
-  squares: number[] | null,
-}
+export default class Board extends Component {
 
-export default class Board extends Component<State> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    }
-  }
-
-  handleClick(i) {
-    const newSquares = this.state.squares.slice();
-    newSquares[i] = 'X';
-    this.setState({ squares: newSquares });
-  }
-
-  renderSquare(i) {
+  renderSquare(i: number) {
     return (
       <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)} />
+        //@ts-ignore
+        value={this.props.squares[i]}
+        //@ts-ignore
+        onClick={() => this.props.onClick(i)} />
     );
   }
 
   render() {
-    const status = 'Next player: X';
 
     return (
       <div>
-        <div className="status">{status}</div>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
