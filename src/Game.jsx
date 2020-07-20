@@ -14,11 +14,12 @@ const GameContainer = styled.div`
   font-size: 20px;
   @media only screen and (max-width: 600px) {
     margin-top: 30px;
-    
   }
 }
 @media only screen and (max-width: 600px) {
     flex-direction: column;
+    height: 100vh;
+    padding-top: 200px;
   }
 `
 
