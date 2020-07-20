@@ -8,6 +8,8 @@ const GameContainer = styled.div`
   flex-direction: row;
   .game-info {
   margin-left: 20px;
+  text-align: center;
+  font-size: 20px;
 }
 `
 
@@ -19,8 +21,14 @@ const HistoryButton = styled.button`
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
   padding: 10px;
   margin: 5px;
+  font-weight: bold;
 `
 
+const Result = styled.div`
+  font-size: 36px;
+  background-color: #FFA500;
+
+`
 
 export default class Game extends Component {
   constructor(props) {
@@ -70,7 +78,7 @@ export default class Game extends Component {
     });
     let status
     if (winner) {
-      return 'Winner' + winner
+      return <Result>{'Winner: ' + winner}</Result>
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }

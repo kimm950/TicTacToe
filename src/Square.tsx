@@ -7,7 +7,6 @@ const SqureButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 3px solid #000; */
   border-radius: 10px;
   float: left;
   font-size: 150px;
