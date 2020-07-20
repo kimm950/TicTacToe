@@ -2,43 +2,57 @@ import React, { Component } from 'react';
 import styled from 'styled-components'
 import './App.css';
 import Board from './Board'
+import { hoverAction, centerdFlex } from './effects';
 
 const GameContainer = styled.div`
   display: flex;
   flex-direction: row;
   .game-info {
+  color: #FFA500;
   margin-left: 20px;
   text-align: center;
   font-size: 20px;
 }
 `
-const WinnerPage = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  > a:visited {
-    text-decoration: none;
-    color: #000;
-  }
-`
 
 const HistoryButton = styled.button`
   border-radius: 5px;
+  width: 181px;
   font-size: 20px;
   background-color: #FFA500;
   border-style: none;
+  border: 1px solid #000;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
   padding: 10px;
   margin: 5px;
   font-weight: bold;
+${hoverAction};
 `
 
-const Result = styled.div`
+const WinnerPage = styled.div`
+  ${centerdFlex}
+  flex-direction: column;
+  font-size: 36px;
+  color: #FFA500;
+  .about-me-area {
+    display: flex;
+    justify-content: center;
+  }
+`
+
+const Result = styled.a`
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
   font-size: 36px;
   background-color: #FFA500;
-  padding: 20px;
+  padding: 15px;
   margin: 10px;
+  border: 1px solid #000;
+  :visited {
+    text-decoration: none;
+    color: #000;
+  }
+${hoverAction};
 `
 
 export default class Game extends Component {
@@ -74,27 +88,27 @@ export default class Game extends Component {
   }
 
   render() {
-
     const history = this.state.history
     const current = history[this.state.stepNum];
     const winner = calculateWinner(current.squares)
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
-
       return (
         <li key={move}>
           <HistoryButton onClick={() => this.jumpTo(move)}>{desc}</HistoryButton>
         </li>
       );
     });
+
     let status
     if (winner) {
       return (
         <WinnerPage>
-          <Result>{'Winner: ' + winner}</Result>
-          <a href='/'>
-            <Result>Replay ↺</Result>
-          </a>
+          <div className='winner-text'>{'Winner: ' + winner}</div>
+          <div className='about-me-area'>
+            <Result href='/'>Replay ↺</Result>
+            <Result href='https://github.com/kimm950' target='blank'>About Me</Result>
+          </div>
         </WinnerPage>
       );
     } else {
@@ -111,7 +125,14 @@ export default class Game extends Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ul>{moves}
+            {history.length === 10 &&
+              <li><HistoryButton onClick={() => this.setState({ stepNum: 0, history: [{ squares: Array(9).fill(null) }] })}>
+                Draw! Re↺
+                </HistoryButton>
+              </li>
+            }
+          </ul>
         </div>
       </GameContainer>
     );
