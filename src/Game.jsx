@@ -55,7 +55,8 @@ const Result = styled.a`
   padding: 15px;
   margin: 10px;
   border: 1px solid #000;
-  :visited {
+  &:active,
+  &:visited {
     text-decoration: none;
     color: #000;
   }
