@@ -1,6 +1,25 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 import './App.css';
 import Board from './Board'
+
+const GameContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  .game-info {
+  margin-left: 20px;
+}
+`
+
+const HistoryButton = styled.button`
+  border-radius: 5px;
+  font-size: 20px;
+  background-color: #FFA500;
+  border-style: none;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  padding: 10px;
+  margin: 5px;
+`
 
 
 export default class Game extends Component {
@@ -45,7 +64,7 @@ export default class Game extends Component {
 
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <HistoryButton onClick={() => this.jumpTo(move)}>{desc}</HistoryButton>
         </li>
       );
     });
@@ -57,7 +76,7 @@ export default class Game extends Component {
     }
 
     return (
-      <div className="game">
+      <GameContainer>
         <div className="game-board">
           <Board
             squares={current.squares}
@@ -68,7 +87,7 @@ export default class Game extends Component {
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
-      </div>
+      </GameContainer>
     );
   }
 }

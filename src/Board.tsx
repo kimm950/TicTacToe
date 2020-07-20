@@ -1,5 +1,13 @@
 import React from 'react';
 import Square from './Square';
+//@ts-ignore
+import styled from 'styled-components'
+
+const BoradRow = styled.div`
+  clear: both;
+  content: "";
+  display: table;
+`
 
 const Board = (props: any) => {
 
@@ -13,21 +21,21 @@ const Board = (props: any) => {
 
   return (
     <div>
-      <div className="board-row">
+      <BoradRow>
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
-      </div>
-      <div className="board-row">
+      </BoradRow>
+      <BoradRow>
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
-      </div>
-      <div className="board-row">
+      </BoradRow>
+      <BoradRow>
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
-      </div>
+      </BoradRow>
     </div>
   );
 }
