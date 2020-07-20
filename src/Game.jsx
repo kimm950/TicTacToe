@@ -19,7 +19,7 @@ const HistoryButton = styled.button`
   border-radius: 5px;
   width: 181px;
   font-size: 20px;
-  background-color: #FFA500;
+  background-color:${props => props.isDrawButton ? `#00c300` : `#FFA500`};
   border-style: none;
   border: 1px solid #000;
   box-shadow: 0 1px 5px rgba(0,0,0,0.2);
@@ -127,14 +127,17 @@ export default class Game extends Component {
           <div>{status}</div>
           <ul>{moves}
             {history.length === 10 &&
-              <li><HistoryButton onClick={() => this.setState({ stepNum: 0, history: [{ squares: Array(9).fill(null) }] })}>
-                Draw! Re↺
+              <li style={{ listStyle: 'none' }}>
+                <HistoryButton
+                  isDrawButton
+                  onClick={() => this.setState({ stepNum: 0, history: [{ squares: Array(9).fill(null) }] })}>
+                  Draw! Re ↺
                 </HistoryButton>
               </li>
             }
           </ul>
         </div>
-      </GameContainer>
+      </GameContainer >
     );
   }
 }
