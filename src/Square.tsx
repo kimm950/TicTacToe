@@ -23,6 +23,11 @@ ${centerdFlex}
   &:hover{
     transform: scale(1.1);
   }
+  @media only screen and (max-width: 600px) {
+      font-size: 50px;
+      width: 100px;
+      height: 100px;
+  }
 `
 
 interface Props {

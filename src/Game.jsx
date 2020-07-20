@@ -12,7 +12,14 @@ const GameContainer = styled.div`
   margin-left: 20px;
   text-align: center;
   font-size: 20px;
+  @media only screen and (max-width: 600px) {
+    margin-top: 30px;
+    
+  }
 }
+@media only screen and (max-width: 600px) {
+    flex-direction: column;
+  }
 `
 
 const HistoryButton = styled.button`
