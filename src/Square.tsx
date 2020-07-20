@@ -1,12 +1,11 @@
 import React from 'react'
 //@ts-ignore
 import styled from 'styled-components'
+import { centerdFlex } from './effects';
 
 const SqureButton = styled.div`
+${centerdFlex}
   background-color: #FFA500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border-radius: 10px;
   float: left;
   font-size: 150px;
@@ -19,10 +18,10 @@ const SqureButton = styled.div`
   padding: 0;
   text-align: center;
   cursor: pointer;
-  box-shadow: 0 1px 10px rgba(0,0,0,0.2);
   transition: 0.2s;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
   &:hover{
-  box-shadow: none;
+    transform: scale(1.1);
   }
 `
 
