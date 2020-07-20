@@ -31,12 +31,12 @@ ol, ul {
   font-size: 150px;
   font-weight: bold;
   line-height: 34px;
+  width: 200px;
   height: 200px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 200px;
   cursor: pointer;
 }
 
