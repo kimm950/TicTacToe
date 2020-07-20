@@ -12,6 +12,16 @@ const GameContainer = styled.div`
   font-size: 20px;
 }
 `
+const WinnerPage = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  > a:visited {
+    text-decoration: none;
+    color: #000;
+  }
+`
 
 const HistoryButton = styled.button`
   border-radius: 5px;
@@ -27,7 +37,8 @@ const HistoryButton = styled.button`
 const Result = styled.div`
   font-size: 36px;
   background-color: #FFA500;
-
+  padding: 20px;
+  margin: 10px;
 `
 
 export default class Game extends Component {
@@ -78,7 +89,14 @@ export default class Game extends Component {
     });
     let status
     if (winner) {
-      return <Result>{'Winner: ' + winner}</Result>
+      return (
+        <WinnerPage>
+          <Result>{'Winner: ' + winner}</Result>
+          <a href='/'>
+            <Result>Replay ↺</Result>
+          </a>
+        </WinnerPage>
+      );
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
